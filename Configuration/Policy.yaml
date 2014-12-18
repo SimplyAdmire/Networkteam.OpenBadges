@@ -1,12 +1,17 @@
-resources:
-  methods:
-    Networkteam_OpenBadges_Public: 'method(Networkteam\OpenBadges\Controller\(IssuerOrganization|BadgeClass|BadgeAssertion)Controller->.*Action())'
-    Networkteam_OpenBadges_Module_BadgeClass: 'method(Networkteam\OpenBadges\Controller\Module\BadgeClassController->.*Action())'
-
-acls:
-  Everybody:
-    methods:
-      Networkteam_OpenBadges_Public: GRANT
+privilegeTargets:
+  TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+    Networkteam_OpenBadges_Public:
+      matcher: 'method(Networkteam\OpenBadges\Controller\(IssuerOrganization|BadgeClass|BadgeAssertion)Controller->.*Action())'
+    Networkteam_OpenBadges_Module_BadgeClass:
+      matcher: 'method(Networkteam\OpenBadges\Controller\Module\BadgeClassController->.*Action())'
+roles:
+  'TYPO3.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: Networkteam_OpenBadges_Public
+        permission: GRANT
   'TYPO3.Neos:Administrator':
-    methods:
-      Networkteam_OpenBadges_Module_BadgeClass: GRANT
+    privileges:
+      -
+        privilegeTarget: Networkteam_OpenBadges_Module_BadgeClass
+        permission: GRANT
