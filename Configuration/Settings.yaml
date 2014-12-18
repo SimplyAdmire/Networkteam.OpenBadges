@@ -57,10 +57,6 @@ TYPO3:
           'Networkteam\OpenBadges\Domain\Model\BadgeClass':
             editor: 'Networkteam.OpenBadges/Inspector/Editors/BadgeClassEditor'
 
-    typoScript:
-      autoInclude:
-        'Networkteam.OpenBadges': TRUE
-
   Flow:
 
     persistence:
