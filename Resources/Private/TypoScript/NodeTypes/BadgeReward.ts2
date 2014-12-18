@@ -1,0 +1,15 @@
+prototype(Networkteam.OpenBadges:BadgeReward) {
+	# Use a cached segment to flush a cache entry whenever the badge class is updated
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			# Flush on node changes
+			1 = ${'Node_' + node.identifier}
+			# This tag is flushed by the BadgeClassEventListener
+			2 = ${'BadgeClass_' + Networkteam.OpenBadges.Persistence.identifier(node.properties.badgeClass)}
+		}
+	}
+}
